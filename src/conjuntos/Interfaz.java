@@ -4,24 +4,17 @@
  */
 package conjuntos;
 
-import java.awt.BorderLayout;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.Stack;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,7 +34,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -70,7 +64,7 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         txtOperacion.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        txtOperacion.setText("AUB");
+        txtOperacion.setText("(C)∁");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Ingrese las operaciones a realizar");
@@ -154,129 +148,153 @@ public class Interfaz extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 75, Short.MAX_VALUE)
-                        .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(99, 99, 99))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(135, 135, 135))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(206, 206, 206))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(90, 90, 90))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Operacion)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnUnion)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnInterseccion)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDifSim)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDiferencia)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnComplemento)))
-                                .addGap(171, 171, 171))))))
-        );
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(86, 86, 86)
+                                                .addComponent(jLabel3)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jScrollPane4))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jScrollPane2)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(0, 75, Short.MAX_VALUE)
+                                                .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 430,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(27, 27, 27))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout
+                                                .createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(jPanel1Layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel1)
+                                                                        .addGap(99, 99, 99))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel4)
+                                                                        .addGap(135, 135, 135))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel5)
+                                                                        .addGap(206, 206, 206))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jScrollPane1,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                333,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGap(90, 90, 90))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                jPanel1Layout.createSequentialGroup()
+                                                                        .addGroup(jPanel1Layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                .addComponent(Operacion)
+                                                                                .addGroup(jPanel1Layout
+                                                                                        .createSequentialGroup()
+                                                                                        .addComponent(btnUnion)
+                                                                                        .addPreferredGap(
+                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(btnInterseccion)
+                                                                                        .addPreferredGap(
+                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(btnDifSim)
+                                                                                        .addPreferredGap(
+                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(btnDiferencia)
+                                                                                        .addPreferredGap(
+                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(btnComplemento)))
+                                                                        .addGap(171, 171, 171)))))));
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnUnion)
-                            .addComponent(btnInterseccion)
-                            .addComponent(btnDifSim)
-                            .addComponent(btnDiferencia)
-                            .addComponent(btnComplemento))
-                        .addGap(73, 73, 73)
-                        .addComponent(Operacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel3)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 46,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel1Layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(btnUnion)
+                                                        .addComponent(btnInterseccion)
+                                                        .addComponent(btnDifSim)
+                                                        .addComponent(btnDiferencia)
+                                                        .addComponent(btnComplemento))
+                                                .addGap(73, 73, 73)
+                                                .addComponent(Operacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel5))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(49, 49, 49)
+                                                .addComponent(jLabel3)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(22, 22, 22)
+                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUnionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnionActionPerformed
+    private void btnUnionActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnUnionActionPerformed
         txtOperacion.setText(txtOperacion.getText() + "∪");
-    }//GEN-LAST:event_btnUnionActionPerformed
+    }// GEN-LAST:event_btnUnionActionPerformed
 
-    private void btnInterseccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterseccionActionPerformed
+    private void btnInterseccionActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnInterseccionActionPerformed
         txtOperacion.setText(txtOperacion.getText() + "∩");
-    }//GEN-LAST:event_btnInterseccionActionPerformed
+    }// GEN-LAST:event_btnInterseccionActionPerformed
 
-    private void btnDifSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDifSimActionPerformed
+    private void btnDifSimActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDifSimActionPerformed
         txtOperacion.setText(txtOperacion.getText() + "∆");
-    }//GEN-LAST:event_btnDifSimActionPerformed
+    }// GEN-LAST:event_btnDifSimActionPerformed
 
-    private void btnDiferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiferenciaActionPerformed
+    private void btnDiferenciaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDiferenciaActionPerformed
         txtOperacion.setText(txtOperacion.getText() + "-");
-    }//GEN-LAST:event_btnDiferenciaActionPerformed
+    }// GEN-LAST:event_btnDiferenciaActionPerformed
 
-    private void btnComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplementoActionPerformed
+    private void btnComplementoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnComplementoActionPerformed
         txtOperacion.setText(txtOperacion.getText() + "∁");
-    }//GEN-LAST:event_btnComplementoActionPerformed
+    }// GEN-LAST:event_btnComplementoActionPerformed
 
     private void OperacionActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_OperacionActionPerformed
         char abcedario = 'A';
@@ -343,7 +361,6 @@ public class Interfaz extends javax.swing.JFrame {
         }
 
     }
-    
 
     private static int getPrecedencia(char operador) {
         switch (operador) {
@@ -361,8 +378,7 @@ public class Interfaz extends javax.swing.JFrame {
     public Vector<String> realizarOperacion(String expresion) {
         Stack<Character> pilaOperadores = new Stack<>();
         Stack<Vector<String>> pilaConjuntos = new Stack<>();
-        StringBuilder expresionSinComplementos = new StringBuilder();
-    
+
         for (int i = 0; i < expresion.length(); i++) {
             char caracter = expresion.charAt(i);
             switch (caracter) {
@@ -379,33 +395,43 @@ public class Interfaz extends javax.swing.JFrame {
                 case '∩':
                 case '∆':
                 case '-':
-                    while (!pilaOperadores.isEmpty() && getPrecedencia(caracter) <= getPrecedencia(pilaOperadores.peek())) {
+                    while (!pilaOperadores.isEmpty()
+                            && getPrecedencia(caracter) <= getPrecedencia(pilaOperadores.peek())) {
                         realizarOperacionBinaria(pilaOperadores, pilaConjuntos);
                     }
                     pilaOperadores.push(caracter);
                     break;
                 case '∁':
-                    // Encontró un complemento, buscar el conjunto correspondiente
-                    int j = i + 1; // Posición del primer paréntesis
-                    int count = 1; // Contador para encontrar el cierre del paréntesis
-                    while (j < expresion.length() && count != 0) {
+                    // Encontró un complemento, buscar el paréntesis de apertura correspondiente
+                    int startIndex = i - 1; // Posición del primer paréntesis
+                    int count = 1; // Contador para encontrar el paréntesis de cierre
+                    int endIndex = -1; // Índice del paréntesis de cierre
+                    int j = startIndex - 1; // Comenzar la búsqueda desde el índice anterior al paréntesis de apertura
+                    while (j >= 0 && count != 0) {
                         char currentChar = expresion.charAt(j);
                         if (currentChar == '(') {
-                            count++;
-                        } else if (currentChar == ')') {
                             count--;
+                            if (count == 0) {
+                                endIndex = j; // Encontrado el paréntesis de cierre
+                            }
+                        } else if (currentChar == ')') {
+                            count++;
                         }
-                        j++;
+                        j--;
                     }
-                    
-                    if (j < expresion.length()) {
-                        String conjuntoStr = expresion.substring(i + 1, j - 1);
-                        Vector<String> conjunto = realizarOperacion(conjuntoStr); // Calcular el complemento del conjunto
-                        pilaConjuntos.push(Operaciones.complemento(conjunto, universo)); // Agregar el complemento a la pila
-                        i = j - 1; // Actualizar la posición del caracter actual
+
+                    if (endIndex != -1) {
+                        // Obtener el conjunto dentro de los paréntesis
+                        String conjuntoStr = expresion.substring(j + 1, startIndex);
+                        // Calcular el complemento del conjunto
+                        Vector<String> conjunto = realizarOperacion(conjuntoStr);
+                        // Agregar el complemento a la pila
+                        pilaConjuntos.push(Operaciones.complemento(conjunto, universo));
+                    } else {
+                        // Error: paréntesis de cierre no encontrado
+                        // Manejar el error según sea necesario
                     }
                     break;
-                
                 default:
                     // Si es una letra de conjunto, agregarlo a la pila de conjuntos
                     Vector<String> conjuntoA = mapaLenguajes.get(caracter);
@@ -413,40 +439,71 @@ public class Interfaz extends javax.swing.JFrame {
                     break;
             }
         }
-    
+
         // Realizar operaciones restantes si quedan en la pila de operadores
         while (!pilaOperadores.isEmpty()) {
             realizarOperacionBinaria(pilaOperadores, pilaConjuntos);
         }
-    
+
         // El resultado final debe estar en la cima de la pila de conjuntos
         return pilaConjuntos.pop();
     }
 
-    private void realizarOperacionBinaria(Stack<Character> pilaOperadores, Stack<Vector<String>> pilaConjuntos) {
-        char operador = pilaOperadores.pop();
-        Vector<String> conjunto2 = pilaConjuntos.pop();
-        Vector<String> conjunto1 = pilaConjuntos.pop();
-        txtHistorial.append("\n" + conjunto1 + " " + operador + " " + conjunto2);
+    private int findClosingParenthesis(String expresion, int startIndex) {
+        int count = 1;
+        int i = startIndex + 1; // Comenzamos desde el siguiente carácter después del paréntesis de apertura
 
-        switch (operador) {
-            case '∪':
-                pilaConjuntos.push(Operaciones.union(conjunto1, conjunto2));
-                break;
-            case '∩':
-                pilaConjuntos.push(Operaciones.interseccion(conjunto1, conjunto2));
-                break;
-            case '∆':
-                pilaConjuntos.push(Operaciones.diferenciaSimetrica(conjunto1, conjunto2));
-                break;
-            case '-':
-                pilaConjuntos.push(Operaciones.diferencia(conjunto1, conjunto2));
-                break;
-            default:
-                // No debería llegar aquí
-                break;
+        while (i < expresion.length()) {
+            char currentChar = expresion.charAt(i);
+            if (currentChar == '(') {
+                count++;
+            } else if (currentChar == ')') {
+                count--;
+                if (count == 0) {
+                    return i; // Se encontró el paréntesis de cierre correspondiente
+                }
+            }
+            i++;
+        }
+
+        return -1; // Paréntesis de cierre no encontrado
+    }
+
+    private void realizarOperacionBinaria(Stack<Character> pilaOperadores, Stack<Vector<String>> pilaConjuntos) {
+        if (!pilaConjuntos.isEmpty() && !pilaOperadores.isEmpty()) {
+            char operador = pilaOperadores.pop();
+            // Verificar si hay al menos dos conjuntos en la pila antes de intentar sacarlos
+            if (pilaConjuntos.size() >= 2) {
+                Vector<String> conjunto2 = pilaConjuntos.pop();
+                Vector<String> conjunto1 = pilaConjuntos.pop();
+                txtHistorial.append("\n" + conjunto1 + " " + operador + " " + conjunto2);
+    
+                switch (operador) {
+                    case '∪':
+                        pilaConjuntos.push(Operaciones.union(conjunto1, conjunto2));
+                        break;
+                    case '∩':
+                        pilaConjuntos.push(Operaciones.interseccion(conjunto1, conjunto2));
+                        break;
+                    case '∆':
+                        pilaConjuntos.push(Operaciones.diferenciaSimetrica(conjunto1, conjunto2));
+                        break;
+                    case '-':
+                        pilaConjuntos.push(Operaciones.diferencia(conjunto1, conjunto2));
+                        break;
+                    default:
+                        // No debería llegar aquí
+                        break;
+                }
+            } else {
+                // Manejar el caso en que no haya suficientes conjuntos en la pila para realizar la operación
+                // Por ejemplo, puedes mostrar un mensaje de error o lanzar una excepción
+            }
+        } else {
+            // Manejar el caso en que la pila de conjuntos o la pila de operadores estén vacías
         }
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Operacion;
