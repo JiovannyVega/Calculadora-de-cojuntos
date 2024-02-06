@@ -2,12 +2,13 @@ package conjuntos;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Operaciones {
-    
+
     public static Vector<Vector<String>> obtenerLenguajes(String cadena) {
         Vector<Vector<String>> lenguajes = new Vector<>();
 
@@ -38,137 +39,76 @@ public class Operaciones {
         return lenguajes;
     }
 
-    public static String union(String conjuntoA, String conjuntoB) {
-        Set<Character> conjuntoUnion = new HashSet<>();
+    public static Vector<String> union(Vector<String> conjuntoA, Vector<String> conjuntoB) {
+        // Utilizar un conjunto para garantizar la unicidad de elementos
+        Set<String> unionSet = new HashSet<>();
 
-        // Agregar elementos de conjuntoA al conjuntoUnion
-        for (char elemento : conjuntoA.toCharArray()) {
-            conjuntoUnion.add(elemento);
+        for (String elemento : conjuntoA) {
+            unionSet.add(elemento);
         }
 
-        // Agregar elementos de conjuntoB al conjuntoUnion
-        for (char elemento : conjuntoB.toCharArray()) {
-            conjuntoUnion.add(elemento);
+        for (String elemento : conjuntoB) {
+            unionSet.add(elemento);
         }
 
-        // Crear una cadena con los elementos de conjuntoUnion
-        StringBuilder resultado = new StringBuilder();
-        for (char elemento : conjuntoUnion) {
-            resultado.append(elemento);
-        }
-
-        return resultado.toString();
+        // Convertir el conjunto a un vector antes de devolverlo
+        return new Vector<>(unionSet);
     }
 
-    public static String interseccion(String conjuntoA, String conjuntoB) {
-        Set<Character> conjuntoInterseccion = new HashSet<>();
+    public static Vector<String> interseccion(Vector<String> conjuntoA, Vector<String> conjuntoB) {
+        Vector<String> interseccion = new Vector<>();
 
-        // Crear conjuntos para A y B
-        Set<Character> setA = new HashSet<>();
-        Set<Character> setB = new HashSet<>();
-
-        // Agregar elementos de conjuntoA al setA
-        for (char elemento : conjuntoA.toCharArray()) {
-            setA.add(elemento);
-        }
-
-        // Agregar elementos de conjuntoB al setB
-        for (char elemento : conjuntoB.toCharArray()) {
-            setB.add(elemento);
-        }
-
-        // Obtener la intersección de A y B
-        for (char elemento : setA) {
-            if (setB.contains(elemento)) {
-                conjuntoInterseccion.add(elemento);
+        for (String elemento : conjuntoA) {
+            if (!conjuntoB.contains(elemento)) {
+                interseccion.add(elemento);
             }
         }
 
-        // Crear una cadena con los elementos de conjuntoInterseccion
-        StringBuilder resultado = new StringBuilder();
-        for (char elemento : conjuntoInterseccion) {
-            resultado.append(elemento);
-        }
-
-        return resultado.toString();
-    }
-
-    public static String diferenciaSimetrica(String conjuntoA, String conjuntoB) {
-        Set<Character> universo = new HashSet<>();
-
-        for (char letra : conjuntoA.toCharArray()) {
-            universo.add(letra);
-        }
-        for (char letra : conjuntoB.toCharArray()) {
-            universo.add(letra);
-        }
-
-        StringBuilder resultado = new StringBuilder();
-        for (char letra : universo) {
-            resultado.append(letra);
-        }
-
-        return complemento(interseccion(conjuntoA, conjuntoB), resultado.toString());
-    }
-
-    public static String diferencia(String conjuntoA, String conjuntoB) {
-        Set<Character> conjuntoDiferencia = new HashSet<>();
-
-        // Crear conjuntos para A y B
-        Set<Character> setA = new HashSet<>();
-        Set<Character> setB = new HashSet<>();
-
-        // Agregar elementos de conjuntoA al setA
-        for (char elemento : conjuntoA.toCharArray()) {
-            setA.add(elemento);
-        }
-
-        // Agregar elementos de conjuntoB al setB
-        for (char elemento : conjuntoB.toCharArray()) {
-            setB.add(elemento);
-        }
-
-        // Obtener la diferencia de A - B
-        for (char elemento : setA) {
-            if (!setB.contains(elemento)) {
-                conjuntoDiferencia.add(elemento);
+        for (String elemento : conjuntoB) {
+            if (!conjuntoA.contains(elemento)) {
+                interseccion.add(elemento);
             }
         }
 
-        // Crear una cadena con los elementos de conjuntoDiferencia
-        StringBuilder resultado = new StringBuilder();
-        for (char elemento : conjuntoDiferencia) {
-            resultado.append(elemento);
-        }
-
-        return resultado.toString();
+        return interseccion;
     }
 
-    public static String complemento(String conjunto, String universo) {
-        Set<Character> setConjunto = new HashSet<>();
-        Set<Character> setUniverso = new HashSet<>();
+    public static Vector<String> diferenciaSimetrica(Vector<String> conjuntoA, Vector<String> conjuntoB) {
+        Vector<String> diferenciaSimetrica = new Vector<>();
 
-        // Agregar elementos de conjunto al setConjunto
-        for (char elemento : conjunto.toCharArray()) {
-            setConjunto.add(elemento);
+        for (String elemento : conjuntoA) {
+            if (conjuntoB.contains(elemento)) {
+                diferenciaSimetrica.add(elemento);
+            }
         }
 
-        // Agregar elementos de universo al setUniverso
-        for (char elemento : universo.toCharArray()) {
-            setUniverso.add(elemento);
+        for (String elemento : conjuntoB) {
+            if (conjuntoA.contains(elemento) && !diferenciaSimetrica.contains(elemento)) {
+                diferenciaSimetrica.add(elemento);
+            }
         }
 
-        // Obtener el complemento de conjunto con respecto a universo
-        Set<Character> conjuntoComplemento = new HashSet<>(setUniverso);
-        conjuntoComplemento.removeAll(setConjunto);
+        return diferenciaSimetrica;
+    }
 
-        // Crear una cadena con los elementos de conjuntoComplemento
-        StringBuilder resultado = new StringBuilder();
-        for (char elemento : conjuntoComplemento) {
-            resultado.append(elemento);
+    public static Vector<String> diferencia(Vector<String> conjuntoA, Vector<String> conjuntoB) {
+        for (String elemento : conjuntoB) {
+            conjuntoA.removeElement(elemento);
         }
 
-        return resultado.toString();
+        return conjuntoA;
+    }
+
+    public static Vector<String> complemento(Vector<String> conjunto, Vector<String> universo) {
+        // Convertir el universo y el conjunto a conjuntos (Set) para facilitar la operación de complemento
+        Set<String> conjuntoUniverso = new HashSet<>(universo);
+        Set<String> conjuntoConjunto = new HashSet<>(conjunto);
+
+        // Calcular el complemento como la diferencia entre el conjuntoUniverso y el conjuntoConjunto
+        conjuntoUniverso.removeAll(conjuntoConjunto);
+
+        // Convertir el resultado de nuevo a un Vector antes de devolverlo
+        return new Vector<>(conjuntoUniverso);
     }
 
     public static Vector<String> obtenerUniverso(Vector<Vector<String>> conjuntos) {
@@ -189,6 +129,42 @@ public class Operaciones {
 
         // Convertir el conjunto a un vector antes de devolverlo
         return new Vector<>(universoSet);
+    }
+
+    public static boolean validarParentesis(String expresion) {
+        Stack<Character> pila = new Stack<>();
+
+        for (char caracter : expresion.toCharArray()) {
+            if (caracter == '(') {
+                pila.push(caracter);
+            } else if (caracter == ')') {
+                if (pila.isEmpty() || pila.pop() != '(') {
+                    // Se encontró un paréntesis cerrado sin un paréntesis correspondiente abierto
+                    return false;
+                }
+            }
+        }
+
+        // La expresión es válida si la pila está vacía al final
+        return pila.isEmpty();
+    }
+
+    public static boolean validarCorchetes(String expresion) {
+        Stack<Character> pila = new Stack<>();
+
+        for (char caracter : expresion.toCharArray()) {
+            if (caracter == '{') {
+                pila.push(caracter);
+            } else if (caracter == '}') {
+                if (pila.isEmpty() || pila.pop() != '{') {
+                    // Se encontró un paréntesis cerrado sin un paréntesis correspondiente abierto
+                    return false;
+                }
+            }
+        }
+
+        // La expresión es válida si la pila está vacía al final
+        return pila.isEmpty();
     }
 
 }

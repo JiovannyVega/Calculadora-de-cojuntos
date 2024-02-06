@@ -22,6 +22,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,27 +32,11 @@ public class Interfaz extends javax.swing.JFrame {
 
     Vector<String> universo;
     Vector<Vector<String>> lenguajes;
-    Map<Character, String> mapaLenguajes;
+    Map<Character, Vector<String>> mapaLenguajes;
 
     public Interfaz() {
         initComponents();
         //insertar_imagen("union_c.png", Boton);
-    }
-
-    public void insertar_imagen(String imagen, JButton boton) {
-        String imagePath = imagen;
-        try {
-            BufferedImage originalImage = ImageIO.read(new File(imagePath));
-            int newWidth = 40;
-            int newHeight = 40;
-
-            Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-            ImageIcon scaledIcon = new ImageIcon(scaledImage);
-
-            boton.setIcon(scaledIcon);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -61,7 +46,7 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtOperacion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        Boton = new javax.swing.JButton();
+        Operacion = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -86,12 +71,12 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Ingrese las operaciones a realizar");
 
-        Boton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        Boton.setText("Realizar operacion");
-        Boton.setIconTextGap(0);
-        Boton.addActionListener(new java.awt.event.ActionListener() {
+        Operacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Operacion.setText("Realizar operacion");
+        Operacion.setIconTextGap(0);
+        Operacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonActionPerformed(evt);
+                OperacionActionPerformed(evt);
             }
         });
 
@@ -173,7 +158,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Boton)
+                        .addComponent(Operacion)
                         .addGap(159, 159, 159))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -209,7 +194,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Boton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Operacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
@@ -232,7 +217,7 @@ public class Interfaz extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActionPerformed
+    private void OperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OperacionActionPerformed
         char abcedario = 'A';
         lenguajes = Operaciones.obtenerLenguajes(txtConjuntos.getText());
         universo = Operaciones.obtenerUniverso(lenguajes);
@@ -242,12 +227,19 @@ public class Interfaz extends javax.swing.JFrame {
         for (String Simbolo : universo) {
             txtHistorial.append(Simbolo + " ");
         }
+        
         txtHistorial.append("\nLenguajes:");
         for (Vector<String> lenguas : lenguajes) {
+            mapaLenguajes.put(abcedario, lenguas);
             txtHistorial.append("\n" + abcedario + ": " + lenguas);
             abcedario++;
         }
-    }//GEN-LAST:event_BotonActionPerformed
+        
+        System.out.println(Operaciones.complemento(lenguajes.get(0), universo));
+        
+        validarParentesis();
+        
+    }//GEN-LAST:event_OperacionActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -256,9 +248,36 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void insertar_imagen(String imagen, JButton boton) {
+        String imagePath = imagen;
+        try {
+            BufferedImage originalImage = ImageIO.read(new File(imagePath));
+            int newWidth = 40;
+            int newHeight = 40;
+
+            Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+            boton.setIcon(scaledIcon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void validarParentesis() {
+        boolean esValida = Operaciones.validarParentesis(txtOperacion.getText());
+        boolean sonValidos = Operaciones.validarCorchetes(txtConjuntos.getText());
+        if (esValida && sonValidos) {
+            System.out.println("Los parentesis son validos");
+        } else {
+            JOptionPane.showMessageDialog(this, "Los parenteis NO son validos");
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Boton;
+    private javax.swing.JButton Operacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
