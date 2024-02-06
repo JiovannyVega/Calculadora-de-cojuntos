@@ -3,37 +3,36 @@ package conjuntos;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Operaciones {
+    
+    public static Vector<Vector<String>> obtenerLenguajes(String cadena) {
+        Vector<Vector<String>> lenguajes = new Vector<>();
 
-    public static Vector<String> obtenerLenguajes(String cadena) {
-        Vector<String> lenguajes = new Vector<>();
+        // Patrón para encontrar cada conjunto dentro de las llaves
+        Pattern patronConjunto = Pattern.compile("\\{(.*?)\\}");
 
-        // Variable para almacenar temporalmente las letras de un lenguaje
-        StringBuilder lenguajeActual = new StringBuilder();
+        // Matcher para encontrar coincidencias en la cadena
+        Matcher matcher = patronConjunto.matcher(cadena);
 
-        // Bandera para indicar si estamos dentro de un bloque
-        boolean dentroDelBloque = false;
+        // Iterar sobre las coincidencias
+        while (matcher.find()) {
+            // Obtener el contenido dentro de las llaves
+            String contenido = matcher.group(1);
 
-        for (int i = 0; i < cadena.length(); i++) {
-            char caracter = cadena.charAt(i);
+            // Dividir el contenido por comas y espacios
+            String[] elementos = contenido.split(",\\s*");
 
-            if (caracter == '{') {
-                // Inicio de bloque
-                dentroDelBloque = true;
-            } else if (caracter == '}') {
-                // Fin de bloque
-                dentroDelBloque = false;
-
-                // Añadir el lenguaje actual al vector
-                lenguajes.add(lenguajeActual.toString());
-
-                // Limpiar el lenguaje actual para el próximo bloque
-                lenguajeActual.setLength(0);
-            } else if (dentroDelBloque && caracter != ',' && caracter != ' ') {
-                // Agregar el caracter al lenguaje actual si estamos dentro de un bloque y no es una coma
-                lenguajeActual.append(caracter);
+            // Convertir el array de elementos a un vector
+            Vector<String> conjunto = new Vector<>();
+            for (String elemento : elementos) {
+                conjunto.add(elemento);
             }
+
+            // Agregar el vector al vector principal
+            lenguajes.add(conjunto);
         }
 
         return lenguajes;
@@ -172,24 +171,24 @@ public class Operaciones {
         return resultado.toString();
     }
 
-    public static String obtenerUniverso(Vector<String> conjuntos) {
-        Set<Character> universo = new HashSet<>();
+    public static Vector<String> obtenerUniverso(Vector<Vector<String>> conjuntos) {
+        // Utilizar un conjunto para garantizar la unicidad de elementos
+        Set<String> universoSet = new HashSet<>();
 
-        // Iterar sobre cada conjunto en el vector
-        for (String conjunto : conjuntos) {
-            // Agregar cada letra del conjunto al conjunto universo
-            for (char letra : conjunto.toCharArray()) {
-                universo.add(letra);
+        // Iterar sobre cada conjunto en los conjuntos
+        for (Vector<String> conjunto : conjuntos) {
+            // Agregar todos los elementos del conjunto al conjunto de universo
+            for (String elemento : conjunto) {
+                for (char simbolo : elemento.toCharArray()) {
+                    String s = "";
+                    s += simbolo;
+                    universoSet.add(s);
+                }
             }
         }
 
-        // Crear una cadena con los elementos del conjunto universo
-        StringBuilder resultado = new StringBuilder();
-        for (char letra : universo) {
-            resultado.append(letra);
-        }
-
-        return resultado.toString();
+        // Convertir el conjunto a un vector antes de devolverlo
+        return new Vector<>(universoSet);
     }
 
 }

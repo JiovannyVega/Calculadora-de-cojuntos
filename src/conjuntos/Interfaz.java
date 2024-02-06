@@ -16,6 +16,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,13 +29,13 @@ import javax.swing.JLabel;
  */
 public class Interfaz extends javax.swing.JFrame {
 
-    String universo;
-    Vector<String> lenguajes;
+    Vector<String> universo;
+    Vector<Vector<String>> lenguajes;
     Map<Character, String> mapaLenguajes;
 
     public Interfaz() {
         initComponents();
-        insertar_imagen("union_c.png", Boton);
+        //insertar_imagen("union_c.png", Boton);
     }
 
     public void insertar_imagen(String imagen, JButton boton) {
@@ -50,15 +52,6 @@ public class Interfaz extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    // Método para convertir una cadena a un conjunto de caracteres
-    private Set<Character> convertirASet(String palabra) {
-        Set<Character> conjunto = new HashSet<>();
-        for (char caracter : palabra.toCharArray()) {
-            conjunto.add(caracter);
-        }
-        return conjunto;
     }
 
     @SuppressWarnings("unchecked")
@@ -94,6 +87,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1.setText("Ingrese las operaciones a realizar");
 
         Boton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Boton.setText("Realizar operacion");
         Boton.setIconTextGap(0);
         Boton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +110,7 @@ public class Interfaz extends javax.swing.JFrame {
         txtConjuntos.setColumns(20);
         txtConjuntos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         txtConjuntos.setRows(5);
-        txtConjuntos.setText("{a, b, c}{c,d,e}");
+        txtConjuntos.setText("{2, 4, 6, 8, 10}{1, 3, 5, 7, 9}{1, 2, 3, 4, 5}");
         jScrollPane2.setViewportView(txtConjuntos);
 
         txtHistorial.setColumns(20);
@@ -154,13 +148,8 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 75, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(Boton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(185, 185, 185))))
+                        .addComponent(txtOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +170,11 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Boton)
+                        .addGap(159, 159, 159))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,23 +194,23 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
-                        .addComponent(Boton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59))
+                                .addGap(132, 132, 132))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)))
+                        .addGap(0, 0, 0)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addComponent(Boton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1)
@@ -236,6 +229,7 @@ public class Interfaz extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActionPerformed
@@ -244,67 +238,14 @@ public class Interfaz extends javax.swing.JFrame {
         universo = Operaciones.obtenerUniverso(lenguajes);
         mapaLenguajes = new HashMap<>();
 
-        txtHistorial.setText("Universo: " + universo);
-        for (String palabra : lenguajes) {
-            char clave = abcedario;
-            txtHistorial.append("\n" + clave + ": " + palabra);
-            mapaLenguajes.put(clave, palabra);
+        txtHistorial.setText("Universo: ");
+        for (String Simbolo : universo) {
+            txtHistorial.append(Simbolo + " ");
+        }
+        txtHistorial.append("\nLenguajes:");
+        for (Vector<String> lenguas : lenguajes) {
+            txtHistorial.append("\n" + abcedario + ": " + lenguas);
             abcedario++;
-            //System.out.println(mapaLenguajes.get(clave));
-        }
-
-        // Realizar operaciones de conjuntos
-        String entrada = txtOperacion.getText();
-        Stack<String> pila = new Stack<>();
-
-        String conjunto1 = "", conjunto2 = "";
-        char operacion = ' ';
-
-        for (char caracter : entrada.toCharArray()) {
-            if (caracter == 'U' || caracter == 'N' || caracter == '#' || caracter == '-' || caracter == '"') {
-                operacion = caracter;
-                System.out.println(caracter);
-                if (caracter == '"') {
-                    conjunto1 = Operaciones.complemento(conjunto1, universo);
-                }
-            }
-            if (Character.isLetterOrDigit(caracter)) {
-                System.out.println(caracter);
-                // Caracter es una letra o número, buscar en el mapa
-                if (mapaLenguajes.containsKey(caracter)) {
-                    if (conjunto1.isEmpty()) {
-                        conjunto1 = mapaLenguajes.get(caracter);
-                    } else {
-                        conjunto2 = mapaLenguajes.get(caracter);
-                        switch (operacion) {
-                            case 'U':
-                                conjunto1 = Operaciones.union(conjunto1, conjunto2);
-                                break;
-                            case 'N':
-                                conjunto1 = Operaciones.interseccion(conjunto1, conjunto2);
-                                break;
-                            case '-':
-                                conjunto1 = Operaciones.diferencia(conjunto1, conjunto2);
-                                break;
-                            case '#':
-                                conjunto1 = Operaciones.diferenciaSimetrica(conjunto1, conjunto2);
-                                break;
-                            default:
-                                throw new AssertionError();
-                        }
-                    }
-                } else {
-                    // Manejar el caso en que la clave no está en el mapa
-                    System.out.println("Error: Clave no encontrada en el mapa - " + caracter);
-                }
-            }
-        }
-
-        txtResultado.setText(conjunto1);
-
-        // El resultado final debe estar en el tope de la pila
-        if (!pila.isEmpty()) {
-            txtHistorial.append("\nResultado: " + pila.pop());
         }
     }//GEN-LAST:event_BotonActionPerformed
 
