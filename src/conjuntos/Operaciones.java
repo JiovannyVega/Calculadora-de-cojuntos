@@ -59,13 +59,7 @@ public class Operaciones {
         Vector<String> interseccion = new Vector<>();
 
         for (String elemento : conjuntoA) {
-            if (!conjuntoB.contains(elemento)) {
-                interseccion.add(elemento);
-            }
-        }
-
-        for (String elemento : conjuntoB) {
-            if (!conjuntoA.contains(elemento)) {
+            if (conjuntoB.contains(elemento)) {
                 interseccion.add(elemento);
             }
         }
@@ -73,22 +67,22 @@ public class Operaciones {
         return interseccion;
     }
 
+
     public static Vector<String> diferenciaSimetrica(Vector<String> conjuntoA, Vector<String> conjuntoB) {
-        Vector<String> diferenciaSimetrica = new Vector<>();
+        HashSet<String> setA = new HashSet<>(conjuntoA);
+        HashSet<String> setB = new HashSet<>(conjuntoB);
 
-        for (String elemento : conjuntoA) {
-            if (conjuntoB.contains(elemento)) {
-                diferenciaSimetrica.add(elemento);
-            }
-        }
+        // Calcula A - B
+        setA.removeAll(conjuntoB);
 
-        for (String elemento : conjuntoB) {
-            if (conjuntoA.contains(elemento) && !diferenciaSimetrica.contains(elemento)) {
-                diferenciaSimetrica.add(elemento);
-            }
-        }
+        // Calcula B - A
+        setB.removeAll(conjuntoA);
 
-        return diferenciaSimetrica;
+        // Une los resultados de ambas diferencias
+        setA.addAll(setB);
+
+        // Convierte el resultado a un Vector y devuelve
+        return new Vector<>(setA);
     }
 
     public static Vector<String> diferencia(Vector<String> conjuntoA, Vector<String> conjuntoB) {
